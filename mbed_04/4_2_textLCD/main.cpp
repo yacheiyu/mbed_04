@@ -12,7 +12,7 @@ int main()
 
 {
 
-      int x=0;
+      int x=30;
 
       lcd.printf("106061142\n");
 
@@ -28,7 +28,7 @@ int main()
 
             wait(1);
 
-            if (x==0)
+            if(x==0)
                x=30;
             else x--;
 

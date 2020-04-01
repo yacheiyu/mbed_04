@@ -15,10 +15,12 @@ int main()
 {
 
     uLCD.background_color(WHITE);
+    uLCD.cls();
 
     // basic printf demo = 16 by 18 characters on screen
 
     uLCD.color(BLUE);
+    uLCD.textbackground_color(WHITE);
 
     uLCD.printf("\n106061142\n"); //Default Green on black text
 
@@ -29,6 +31,8 @@ int main()
     uLCD.text_height(4);
 
     uLCD.color(GREEN);
+    uLCD.textbackground_color(WHITE);
+    
 
     for (int i=30; i>=0; --i) {
 
@@ -37,6 +41,10 @@ int main()
         uLCD.printf("%2D",i);
 
         wait(.5);
+
+        if(i==0)
+           i=31;
+        else i=i;
 
     }
 
