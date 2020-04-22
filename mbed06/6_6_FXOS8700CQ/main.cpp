@@ -44,6 +44,12 @@
 
 #define FXOS8700Q_WHOAMI_VAL 0xC7
 
+#include "mbed.h"
+
+#include "uLCD_4DGL.h"
+
+
+uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 
 I2C i2c( PTD9,PTD8);
 
@@ -121,8 +127,13 @@ int main() {
 
       t[2] = ((float)acc16) / 4096.0f;
 
-
-      printf("FXOS8700Q ACC: X=%1.4f(%x%x) Y=%1.4f(%x%x) Z=%1.4f(%x%x)\r\n",\
+      uLCD.color(RED);
+      uLCD.printf("FXOS8700Q ACC: X=%1.4f(%x%x)\n\n\n\n",t[0], res[0], res[1]);
+      uLCD.color(GREEN);
+      uLCD.printf("FXOS8700Q ACC: Y=%1.4f(%x%x)\n\n\n\n",t[1], res[2], res[3]);
+      uLCD.color(BLUE);
+      uLCD.printf("FXOS8700Q ACC: Z=%1.4f(%x%x)\n\n\n\n\n",t[2], res[4], res[5]);
+      /*printf("FXOS8700Q ACC: X=%1.4f(%x%x) Y=%1.4f(%x%x) Z=%1.4f(%x%x)\r\n",\
 
             t[0], res[0], res[1],\
 
@@ -130,7 +141,7 @@ int main() {
 
             t[2], res[4], res[5]\
 
-      );
+      );*/
 
 
       wait(1.0);
